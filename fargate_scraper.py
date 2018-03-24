@@ -13,7 +13,7 @@ __version__ = "0.0.1"
 
 LOGGER = logging.getLogger("fargate_scraper")
 LOGFMT = "[%(asctime)s] [PID %(process)d] [%(threadName)s] [%(name)s] [%(levelname)s] %(message)s"
-REQUIRED_ENV_VARS = ["METRICS_PATH", "METRICS_PORT"]
+REQUIRED_ENV_VARS = ["METRICS_PORT"]
 
 
 def parse_args():
@@ -156,13 +156,11 @@ class Scraper:
                     for details in attachment_details:
                         name, value = details["name"], details["value"]
                         if name == "privateIPv4Address":
-                            path = task_definition_vars.get("METRICS_PATH", "/_metrics")
                             port = task_definition_vars.get("METRICS_PORT", 8000)
                             family = task_definition_vars.get("FAMILY", "unknown")
-                            scrapable_configs[family].append("%(host)s:%(port)s%(path)s" % {
+                            scrapable_configs[family].append("%(host)s:%(port)s" % {
                                 "host": value,
                                 "port": port,
-                                "path": path,
                             })
 
         return [{

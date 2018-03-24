@@ -14,7 +14,8 @@ A CLI tool that scrapes [Fargate] tasks to find [Prometheus] targets.
 ## Usage
 
 Give the script the name of the ECS cluster you want to scrape and the
-location of where it should output the results.
+location of where it should output the results.  It will automatically
+pick up credentials from its environment.  See [boto3] for details.
 
 ```
 fargate-scraper --cluster-name my-cluster output.json
@@ -25,6 +26,7 @@ Then point your prometheus config at that file.
 ``` yaml
 scrape_configs:
   - job_name: prometheus
+    metrics_path: "/metrics"
     file_sd_configs:
       - files:
           - output.json
@@ -33,8 +35,10 @@ scrape_configs:
 
 Prometheus will automatically pick up changes to the file.
 
-The script will pick up any Fargate containers that have
-`METRICS_PATH` and `METRIC_PORT` env vars defined.
+The script will pick up any Fargate containers that have a
+`METRIC_PORT` env var defined.
+
+[boto3]: https://boto3.readthedocs.io/en/latest/
 
 
 ## License
