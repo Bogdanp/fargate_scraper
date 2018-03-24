@@ -9,7 +9,7 @@ from collections import defaultdict
 from threading import Event
 from typing import Iterator, List
 
-__version__ = "0.0.0"
+__version__ = "0.0.1"
 
 LOGGER = logging.getLogger("fargate_scraper")
 LOGFMT = "[%(asctime)s] [PID %(process)d] [%(threadName)s] [%(name)s] [%(levelname)s] %(message)s"
