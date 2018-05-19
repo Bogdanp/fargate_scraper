@@ -1,13 +1,13 @@
 import argparse
-import boto3
 import json
 import logging
 import signal
 import sys
-
 from collections import defaultdict
 from threading import Event
 from typing import Iterator, List
+
+import boto3
 
 __version__ = "0.0.2"
 
