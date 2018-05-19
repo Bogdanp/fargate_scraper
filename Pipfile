@@ -9,6 +9,9 @@ name = "pypi"
 [dev-packages]
 bumpversion = "*"
 twine = "*"
+"flake8" = "*"
+"flake8-quotes" = "*"
+isort = "*"
 
 [requires]
 python_version = "3.6"
