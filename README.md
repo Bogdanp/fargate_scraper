@@ -36,7 +36,7 @@ scrape_configs:
 Prometheus will automatically pick up changes to the file.
 
 The script will pick up any Fargate containers that have a
-`METRIC_PORT` env var defined.
+`METRICS_PORT` env var defined.
 
 [boto3]: https://boto3.readthedocs.io/en/latest/
 
