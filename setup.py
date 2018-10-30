@@ -26,6 +26,17 @@ setup(
     packages=[],
     py_modules=["fargate_scraper"],
     install_requires=["boto3"],
+    extras_require={
+        "dev": [
+            "bumpversion",
+            "flake8",
+            "flake8-quotes",
+            "isort",
+            "pytest",
+            "pytest-cov",
+            "twine",
+        ]
+    },
     python_requires=">=3.5",
     entry_points={
         "console_scripts": [
